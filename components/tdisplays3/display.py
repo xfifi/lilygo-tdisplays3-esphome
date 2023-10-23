@@ -8,6 +8,7 @@ from esphome.const import (
     CONF_ID,
     CONF_LAMBDA,
     CONF_WIDTH,
+    CONF_CS_PIN,
     CONF_DC_PIN,
     CONF_RESET_PIN,
     CONF_NUMBER,
@@ -37,6 +38,7 @@ CONFIG_SCHEMA = cv.All(
             cv.Optional(CONF_LOAD_FONTS, default=False): cv.boolean,
             cv.Optional(CONF_LOAD_SMOOTH_FONTS, default=False): cv.boolean,
             cv.Optional(CONF_ENABLE_LIBRARY_WARNINGS, default=False): cv.boolean,
+            cv.Optional(CONF_CS_PIN, default=6): pins.gpio_output_pin_schema,
             cv.Optional(CONF_RESET_PIN, default=5): pins.gpio_output_pin_schema,
             cv.Optional(CONF_DC_PIN, default=7): pins.gpio_output_pin_schema,
         }
@@ -56,7 +58,7 @@ async def to_code(config):
     cg.add_build_flag(f"-DTFT_WIDTH={config[CONF_WIDTH]}")
     cg.add_build_flag(f"-DTFT_HEIGHT={config[CONF_HEIGHT]}")
     cg.add_build_flag(f"-DTFT_RST={config[CONF_RESET_PIN][CONF_NUMBER]}")
-    cg.add_build_flag(f"-DTFT_CS=-1")
+    cg.add_build_flag(f"-DTFT_CS={config[CONF_CS_PIN][CONF_NUMBER]}")
     cg.add_build_flag(f"-DTFT_DC={config[CONF_DC_PIN][CONF_NUMBER]}")
 
     if config[CONF_LOAD_FONTS]:
