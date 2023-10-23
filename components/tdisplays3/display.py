@@ -37,8 +37,8 @@ CONFIG_SCHEMA = cv.All(
             cv.Optional(CONF_LOAD_FONTS, default=False): cv.boolean,
             cv.Optional(CONF_LOAD_SMOOTH_FONTS, default=False): cv.boolean,
             cv.Optional(CONF_ENABLE_LIBRARY_WARNINGS, default=False): cv.boolean,
-            cv.Optional(CONF_RESET_PIN, default=4): pins.gpio_output_pin_schema,
-            cv.Optional(CONF_DC_PIN, default=2): pins.gpio_output_pin_schema,
+            cv.Optional(CONF_RESET_PIN, default=19): pins.gpio_output_pin_schema,
+            cv.Optional(CONF_DC_PIN, default=15): pins.gpio_output_pin_schema,
         }
     ).extend(cv.polling_component_schema("5s")),
 )
