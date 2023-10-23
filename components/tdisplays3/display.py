@@ -84,7 +84,7 @@ async def to_code(config):
     # Touch_reset 21
 
     if config[CONF_BACKLIGHT]:
-        cg.add_build_flag("-DTFT_BL=32")
+        cg.add_build_flag("-DTFT_BL=38")
         cg.add_build_flag("-DTFT_BACKLIGHT_ON=HIGH")
 
     cg.add_library("TFT_eSPI", None)
